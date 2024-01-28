@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum FightOption
@@ -19,12 +20,13 @@ public class NestedMenu : MonoBehaviour
 {
     public GameObject menuPrefab;
     public GameObject textPrefab;
-
+    private GameObject comedian;
     private List<Menu> menus;
 
     // Start is called before the first frame update
     void Start()
     {
+        comedian = GameObject.FindGameObjectWithTag("Comedian");
         menus = new List<Menu>();
     }
 
@@ -55,7 +57,7 @@ public class NestedMenu : MonoBehaviour
                 menuObj = Instantiate(menuPrefab, transform);
                 newMenu = menuObj.GetComponent<Menu>();
 
-                newMenu.options = new String[] { "Throw", "Joke", "Special" };
+                newMenu.options = new String[] { "Throw Pie", "Joke", "Special" };
                 menus.Add(newMenu);
                 return;
             }
@@ -66,9 +68,21 @@ public class NestedMenu : MonoBehaviour
 
             if (depth == 0)
             {
+                if (selection == 0)
+                {
+                    comedian.GetComponent<FighterAction>().SelectAttack("throwPie");
+                }
+                if (selection ==1)
+                {
+                   
+                   comedian.GetComponent<FighterAction>().SelectAttack("joke");
+
+                    
+                }
                 if (selection == 2)
                 {
                     // TODO: special attack!
+                    comedian.GetComponent<FighterAction>().SelectAttack("special");
                     return;
                 }
                 menuObj = Instantiate(menuPrefab, last.transform);

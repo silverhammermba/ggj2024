@@ -40,7 +40,7 @@ public class AttackScript : MonoBehaviour
     {
         attackerStats = owner.GetComponent<FighterStats>();
         targetStats = victim.GetComponent<FighterStats>();
-       /* if (attackerStats.magic >= magicCost)
+        if (attackerStats.magic >= magicCost)
         {
             float multiplier = Random.Range(minAttackMultiplier, maxAttackMultiplier);
             attackerStats.updateMagicFill(magicCost);
@@ -55,6 +55,6 @@ public class AttackScript : MonoBehaviour
             damage = Mathf.Max(0, damage - (defenseMultiplier * targetStats.defense));
             owner.GetComponent<Animator>().Play(animationName);
             targetStats.RecieveDamage(damage);
-        }*/
+        }
     }
 }
