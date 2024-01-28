@@ -13,7 +13,7 @@ public class MakeButton : MonoBehaviour
     {
         string temp = gameObject.name;
         gameObject.GetComponent<Button>().onClick.AddListener(() => AttachCallback(temp));
-        clown = GameObject.FindGameObjectWithTag("clown1");
+        clown = GameObject.FindGameObjectWithTag("Comedian");
     }
 
     private void AttachCallback(string btn)
