@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FighterAction : MonoBehaviour
 {
     private GameObject enemy;
-    private GameObject clown1;
+    private GameObject Comedian;
 
     [SerializeField]
     private GameObject jokePrefab;
@@ -25,8 +25,8 @@ public class FighterAction : MonoBehaviour
 
     public void SelectAttack(string btn)
     {
-        GameObject victim = clown1;
-        if (tag == "clown1")
+        GameObject victim = Comedian;
+        if (tag == "Comedian")
         {
             victim = enemy;
         }
