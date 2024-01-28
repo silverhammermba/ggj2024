@@ -33,7 +33,7 @@ public class AttackScript : MonoBehaviour
 
     private void Start()
     {
-        magicScale = GameObject.Find("SpecialMagicFill").GetComponent<RectTransform>().localScale;
+        //magicScale = GameObject.Find("SpecialMagicFill").GetComponent<RectTransform>().localScale;
     }
 
     public void Attack(GameObject victim)
@@ -45,7 +45,7 @@ public class AttackScript : MonoBehaviour
             float multiplier = Random.Range(minAttackMultiplier, maxAttackMultiplier);
             attackerStats.updateMagicFill(magicCost);
 
-            damage = multiplier * attackerStats.attack;
+            damage = multiplier * attackerStats.melee;
             if (magicAttack)
             {
                 damage = multiplier * attackerStats.magic;
