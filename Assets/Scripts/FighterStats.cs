@@ -43,7 +43,7 @@ public class FighterStats : MonoBehaviour, IComparable
     private float xNewHealthScale;
     private float xNewMagicScale;
 
-    private void Start()
+    void Awake()
     {
         healthTransform = healthFill.GetComponent<RectTransform>();
         healthScale = healthTransform.localScale;
@@ -70,8 +70,9 @@ public class FighterStats : MonoBehaviour, IComparable
             Destroy(healthFill);
             Destroy(gameObject);
         }
-        else
-        {
+
+        else if (damage > 0)
+                {
             //changes how much health is in the bar based on attack
             xNewHealthScale = healthScale.x * (health / startHealth);
             healthFill.transform.localScale = new Vector2(xNewHealthScale, healthScale.y);
@@ -82,9 +83,13 @@ public class FighterStats : MonoBehaviour, IComparable
 
     public void updateMagicFill(float cost)
     {
-        magic = magic - cost;
-        xNewMagicScale = magicScale.x * (magic / startMagic);
-        magicFill.transform.localScale = new Vector2(xNewMagicScale, magicScale.y);
+        if(cost < 1)
+        {
+            magic = magic - cost;
+            xNewMagicScale = magicScale.x * (magic / startMagic);
+            magicFill.transform.localScale = new Vector2(xNewMagicScale, magicScale.y);
+        }
+      
     }
 
     public bool GetDead()
