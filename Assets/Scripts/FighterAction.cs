@@ -22,7 +22,7 @@ public class FighterAction : MonoBehaviour
     private GameObject currentAttack;
     
 
-    private void Start()
+     void Awake()
     {
         comedian = GameObject.FindGameObjectWithTag("Comedian");
         enemy = GameObject.FindGameObjectWithTag("enemy");

@@ -87,9 +87,22 @@ public class FighterStats : MonoBehaviour, IComparable
         magicFill.transform.localScale = new Vector2(xNewMagicScale, magicScale.y);
     }
 
+    public bool GetDead()
+    {
+        return dead;
+    }
+
+    public void CalculateNextTurn(int currentTurn)
+    {
+        nextActTurn = currentTurn + Mathf.CeilToInt(100f / speed);
+    }
+
+
     public int CompareTo(object otherStats)
     {
         int next = nextActTurn.CompareTo(((FighterStats)otherStats).nextActTurn);
         return next;
     }
+
+
 }
