@@ -8,36 +8,40 @@ using UnityEngine.UI;
 public class FighterAction : MonoBehaviour
 {
     private GameObject enemy;
-    private GameObject Comedian;
+    private GameObject comedian;
 
     [SerializeField]
-    private GameObject jokePrefab;
+    private GameObject meleePrefab;
 
     [SerializeField]
-    private GameObject throwPrefab;
+    private GameObject rangePrefab;
 
     [SerializeField]
     private Sprite faceIcon;
 
     private GameObject currentAttack;
-    private GameObject jokeAttack;
-    private GameObject throwAttack;
+    
 
+    private void Start()
+    {
+        comedian = GameObject.FindGameObjectWithTag("Comedian");
+        enemy = GameObject.FindGameObjectWithTag("enemy");
+    }
     public void SelectAttack(string btn)
     {
-        GameObject victim = Comedian;
+        GameObject victim = comedian;
         if (tag == "Comedian")
         {
             victim = enemy;
         }
         if (btn.CompareTo("joke") == 0)
         {
-            jokeAttack.GetComponent<AttackScript>().Attack(victim);
+            meleePrefab.GetComponent<AttackScript>().Attack(victim);
 
         }
         else if (btn.CompareTo("throwPie") == 0)
         {
-            throwAttack.GetComponent<AttackScript>().Attack(victim);
+            rangePrefab.GetComponent<AttackScript>().Attack(victim);
 
         }
         else

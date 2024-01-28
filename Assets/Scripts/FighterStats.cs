@@ -20,7 +20,7 @@ public class FighterStats : MonoBehaviour, IComparable
     public float health;
     public float magic;
     public float melee;
-    public float range;
+    public float throwRange;
     public float defense;
     public float speed;
     public float experience;

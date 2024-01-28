@@ -48,7 +48,7 @@ public class AttackScript : MonoBehaviour
             damage = multiplier * attackerStats.melee;
             if (magicAttack)
             {
-                damage = multiplier * attackerStats.magic;
+                damage = multiplier * attackerStats.throwRange;
                 attackerStats.magic = attackerStats.magic - magicCost;
             }
             float defenseMultiplier = Random.Range(minDefenseMultiplier, maxDefenseMultiplier);
