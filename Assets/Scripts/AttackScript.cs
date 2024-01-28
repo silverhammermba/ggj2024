@@ -33,17 +33,17 @@ public class AttackScript : MonoBehaviour
 
     private void Start()
     {
-        magicScale = GameObject.Find("AudienceEnjoymentFill").GetComponent<RectTransform>().localScale;
+        magicScale = GameObject.Find("SpecialMagicFill").GetComponent<RectTransform>().localScale;
     }
 
     public void Attack(GameObject victim)
     {
         attackerStats = owner.GetComponent<FighterStats>();
         targetStats = victim.GetComponent<FighterStats>();
-        if (attackerStats.magic >= magicCost)
+       /* if (attackerStats.magic >= magicCost)
         {
             float multiplier = Random.Range(minAttackMultiplier, maxAttackMultiplier);
-            attackerStats.updateManaFill(magicCost);
+            attackerStats.updateMagicFill(magicCost);
 
             damage = multiplier * attackerStats.attack;
             if (magicAttack)
@@ -55,6 +55,6 @@ public class AttackScript : MonoBehaviour
             damage = Mathf.Max(0, damage - (defenseMultiplier * targetStats.defense));
             owner.GetComponent<Animator>().Play(animationName);
             targetStats.RecieveDamage(damage);
-        }
+        }*/
     }
 }

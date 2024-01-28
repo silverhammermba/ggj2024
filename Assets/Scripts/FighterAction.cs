@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class FighterAction : MonoBehaviour
@@ -31,12 +32,12 @@ public class FighterAction : MonoBehaviour
         }
         if (btn.CompareTo("joke") == 0)
         {
-            jokeAttack.GetComponent<AttackScript>.Attack(victim);
+            jokeAttack.GetComponent<AttackScript>().Attack(victim);
 
         }
         else if (btn.CompareTo("throwPie") == 0)
         {
-            throwAttack.GetComponent<AttackScript>.Attack(victim);
+            throwAttack.GetComponent<AttackScript>().Attack(victim);
 
         }
         else

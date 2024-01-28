@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
-public class FighterStats : MonoBehaviour
+public class FighterStats : MonoBehaviour, IComparable
 {
     [SerializeField]
     private Animator animator;
     //how much health you have left
+
     [SerializeField]
     private GameObject healthFill;
+
     [SerializeField]
     private GameObject magicFill;
 
     [Header("Stats")]
     public float health;
     public float magic;
-    public float attack;
-    public float defense;
+    public float melee;
     public float range;
+    public float defense;
     public float speed;
     public float experience;
-   
 
     private float startHealth;
     private float startMagic;
@@ -45,7 +48,7 @@ public class FighterStats : MonoBehaviour
         healthTransform = healthFill.GetComponent<RectTransform>();
         healthScale = healthTransform.localScale;
 
-        magicTransform = magicFill.GetComponent<RectTransform>();t
+        magicTransform = magicFill.GetComponent<RectTransform>();
         magicScale = magicTransform.localScale;
 
         startHealth = health;
@@ -60,19 +63,20 @@ public class FighterStats : MonoBehaviour
         animator.Play("Damage");
 
         // Set damage text
-        if(health <= 0)
+        if (health <= 0)
         {
             dead = true;
             gameObject.tag = "Dead";
             Destroy(healthFill);
             Destroy(gameObject);
-        }else
+        }
+        else
         {
             //changes how much health is in the bar based on attack
             xNewHealthScale = healthScale.x * (health / startHealth);
             healthFill.transform.localScale = new Vector2(xNewHealthScale, healthScale.y);
         }
-       
+
     }
 
 
@@ -81,5 +85,11 @@ public class FighterStats : MonoBehaviour
         magic = magic - cost;
         xNewMagicScale = magicScale.x * (magic / startMagic);
         magicFill.transform.localScale = new Vector2(xNewMagicScale, magicScale.y);
+    }
+
+    public int CompareTo(object otherStats)
+    {
+        int next = nextActTurn.CompareTo(((FighterStats)otherStats).nextActTurn);
+        return next;
     }
 }
