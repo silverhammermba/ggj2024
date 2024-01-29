@@ -31,6 +31,14 @@ public class AttackScript : MonoBehaviour
     private FighterStats targetStats;
     private float damage = 0.0f;
 
+    //potential audience Enjoyment bar
+    private Vector2 magicScale;
+
+    private void Start()
+    {
+        //magicScale = GameObject.Find("SpecialMagicFill").GetComponent<RectTransform>().localScale;
+    }
+
     public void Attack(GameObject victim)
     {
         Debug.Log("warning", owner);
@@ -47,6 +55,11 @@ public class AttackScript : MonoBehaviour
         if (attackerStats.magic >= magicCost)
         {
             float multiplier = Random.Range(minAttackMultiplier, maxAttackMultiplier);
+            if(magicCost > 0)
+            {
+                attackerStats.updateMagicFill(magicCost);
+            }
+            
 
             damage = multiplier * attackerStats.melee;
             if (magicAttack)
