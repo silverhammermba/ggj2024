@@ -56,7 +56,7 @@ public class FighterStats : MonoBehaviour, IComparable
 
     }
 
-    public void RecieveDamage(float damage)
+    public void ReceiveDamage(float damage)
     {
         health = health - damage;
         //plays damage animation
@@ -77,7 +77,7 @@ public class FighterStats : MonoBehaviour, IComparable
             xNewHealthScale = healthScale.x * (health / startHealth);
             healthFill.transform.localScale = new Vector2(xNewHealthScale, healthScale.y);
         }
-
+        Invoke("ContinueGame", 2);
     }
 
 
@@ -97,6 +97,10 @@ public class FighterStats : MonoBehaviour, IComparable
         return dead;
     }
 
+    void ContinueGame()
+    {
+        GameObject.Find("GameControllerObject").GetComponent<GameController>().NextTurn();
+    }
     public void CalculateNextTurn(int currentTurn)
     {
         nextActTurn = currentTurn + Mathf.CeilToInt(100f / speed);

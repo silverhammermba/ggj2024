@@ -47,7 +47,7 @@ public class NestedMenu : MonoBehaviour
             menus.RemoveAt(menus.Count - 1);
             Destroy(last.gameObject);
         }
-        if (Input.GetKeyDown("right"))
+        if (Input.GetKeyDown("space"))
         {
             GameObject menuObj;
             Menu newMenu;
@@ -57,7 +57,7 @@ public class NestedMenu : MonoBehaviour
                 menuObj = Instantiate(menuPrefab, transform);
                 newMenu = menuObj.GetComponent<Menu>();
 
-                newMenu.options = new String[] { "Throw Pie", "Joke", "Special" };
+                newMenu.options = new String[] { "Throw Pie", "Joke"};
                 menus.Add(newMenu);
                 return;
             }
@@ -79,18 +79,18 @@ public class NestedMenu : MonoBehaviour
 
                     
                 }
-                if (selection == 2)
+               /* if (selection == 2)
                 {
                     // TODO: special attack!
                     comedian.GetComponent<FighterAction>().SelectAttack("special");
                     return;
-                }
-                menuObj = Instantiate(menuPrefab, last.transform);
+                }*/
+               /* menuObj = Instantiate(menuPrefab, last.transform);
                 RectTransform rect = menuObj.GetComponent<RectTransform>();
                 rect.localPosition = last.SelectionRightEdge();
 
-                newMenu = menuObj.GetComponent<Menu>();
-                switch (selection)
+                newMenu = menuObj.GetComponent<Menu>();*/
+                /*switch (selection)
                 {
                     case 0:
                         newMenu.options = new string[] { "Pie", "Shoe", "Confetti" };
@@ -98,8 +98,8 @@ public class NestedMenu : MonoBehaviour
                     default:
                         newMenu.options = new string[] { "Insult", "Pun", "Quip" };
                         break;
-                }
-                menus.Add(newMenu);
+                }*/
+               // menus.Add(newMenu);
                 return;
             }
 
